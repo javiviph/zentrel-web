@@ -26,9 +26,7 @@ export function Contact({ onStartVoiceCall }: ContactProps) {
     <section id={contactSection.id} className="section" aria-labelledby="contacto-title">
       <div className="wrap">
         <div className="card reveal px-6 py-10 shadow-[8px_10px_0_rgba(28,27,22,0.12)] md:px-12 md:py-14">
-          <p className="font-pixel2 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-            {contactSection.eyebrow}
-          </p>
+          <p className="eyebrow">{contactSection.eyebrow}</p>
           <h2
             id="contacto-title"
             className="mt-4 max-w-xl font-sans text-[clamp(2.15rem,4.6vw,3.6rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-ink"
@@ -49,7 +47,7 @@ export function Contact({ onStartVoiceCall }: ContactProps) {
           {soon ? (
             <p role="status" className="mt-4 max-w-md text-sm leading-relaxed text-ink2">
               {contactSection.soonLead}{" "}
-              <a href={`mailto:${contactEmail}`} className="font-semibold text-ink underline decoration-accent/40 underline-offset-2">
+              <a href={`mailto:${contactEmail}`} className="font-semibold text-ink underline decoration-accent-ink/50 underline-offset-2">
                 {contactEmail}
               </a>
             </p>

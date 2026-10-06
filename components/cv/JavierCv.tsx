@@ -27,7 +27,7 @@ import {
 } from "@/lib/javier";
 
 const TICK = (
-  <svg viewBox="0 0 11 11" fill="#F4F1E8" shapeRendering="crispEdges" aria-hidden="true">
+  <svg viewBox="0 0 11 11" fill="var(--ink)" shapeRendering="crispEdges" aria-hidden="true">
     <rect x="8" y="2" width="2" height="1" />
     <rect x="7" y="3" width="2" height="1" />
     <rect x="6" y="4" width="2" height="1" />
@@ -250,10 +250,7 @@ export function JavierCv() {
       <header className="cv-hero">
         <div className="wrap cv-hero-grid">
           <div>
-            <p className="flex items-center gap-2.5 font-pixel2 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-              <span className="size-2 shrink-0 bg-accent" aria-hidden="true" />
-              {javierHero.eyebrow}
-            </p>
+            <p className="eyebrow">{javierHero.eyebrow}</p>
             <h1 className="cv-h1">
               {javierHero.name} <span className="serif">{javierHero.nameEm}</span>
             </h1>
@@ -321,7 +318,7 @@ export function JavierCv() {
       <section className="cv-sec" id="perfil" aria-labelledby={`${headingId}-perfil`}>
         <div className="wrap">
           <div className="cv-head">
-            <span className="k">01 /</span>
+            <span className="pixel" aria-hidden="true" />
             <h2 id={`${headingId}-perfil`}>Perfil</h2>
             <span className="rule" />
           </div>
@@ -366,7 +363,7 @@ export function JavierCv() {
       <section className="cv-sec" id="aporto" aria-labelledby={`${headingId}-aporto`}>
         <div className="wrap">
           <div className="cv-head">
-            <span className="k">02 /</span>
+            <span className="pixel" aria-hidden="true" />
             <h2 id={`${headingId}-aporto`}>
               Qué <span className="serif">aporto.</span>
             </h2>
@@ -389,7 +386,7 @@ export function JavierCv() {
       <section className="cv-sec" id="experiencia" aria-labelledby={`${headingId}-experiencia`}>
         <div className="wrap">
           <div className="cv-head">
-            <span className="k">03 /</span>
+            <span className="pixel" aria-hidden="true" />
             <h2 id={`${headingId}-experiencia`}>Experiencia</h2>
             <span className="rule" />
           </div>
@@ -464,7 +461,7 @@ export function JavierCv() {
       <section className="cv-sec" id="conocimientos" aria-labelledby={`${headingId}-skills`}>
         <div className="wrap">
           <div className="cv-head">
-            <span className="k">04 /</span>
+            <span className="pixel" aria-hidden="true" />
             <h2 id={`${headingId}-skills`}>Conocimientos</h2>
             <span className="rule" />
           </div>
@@ -493,7 +490,7 @@ export function JavierCv() {
       <section className="cv-sec" id="formacion" aria-labelledby={`${headingId}-mas`}>
         <div className="wrap">
           <div className="cv-head">
-            <span className="k">05 /</span>
+            <span className="pixel" aria-hidden="true" />
             <h2 id={`${headingId}-mas`}>
               Formación <span className="serif">y más.</span>
             </h2>

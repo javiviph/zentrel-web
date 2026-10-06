@@ -32,7 +32,7 @@ export function WorkPlaceholders() {
               </div>
               <div className="flex items-end justify-between gap-4 p-5 md:p-6">
                 <div>
-                  <p className="font-pixel text-[11px] tracking-[0.14em] text-accent">{item.index}</p>
+                  <p className="font-pixel text-[11px] tracking-[0.14em] text-accent-ink">{item.index}</p>
                   <h3 className="mt-2 font-sans text-xl font-extrabold tracking-[-0.03em] text-ink">{item.type}</h3>
                   <p className="mt-1 text-sm text-ink2">
                     {item.outcome ?? "Resultado pendiente"}

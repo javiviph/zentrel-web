@@ -10,7 +10,7 @@ function Visual() {
       <g className="m bob">
         <rect x="16" y="30" width="48" height="32" rx="3" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.6" />
         <rect x="20" y="34" width="40" height="20" fill="#241F1A" />
-        <rect className="m bar" x="24" y="44" width="6" height="8" fill="#6366F1" />
+        <rect className="m bar" x="24" y="44" width="6" height="8" fill="var(--accent-hot)" />
         <rect className="m bar d1" x="33" y="40" width="6" height="12" fill="#74A84A" />
         <rect className="m bar d2" x="42" y="36" width="6" height="16" fill="#F2C14E" />
         <rect x="34" y="62" width="12" height="4" fill="#1C1B16" />
@@ -18,7 +18,7 @@ function Visual() {
       </g>
       <g className="m rock">
         <path d="M78 58l14 7-14 7-14-7 14-7Z" fill="#D5E4F2" stroke="#1C1B16" strokeWidth="1.3" />
-        <path d="M78 72l14-7v12l-14 7V72Z" fill="#4F46E5" stroke="#1C1B16" strokeWidth="1.3" />
+        <path d="M78 72l14-7v12l-14 7V72Z" fill="var(--accent)" stroke="#1C1B16" strokeWidth="1.3" />
         <path d="M78 72l-14-7v12l14 7V72Z" fill="#74A84A" stroke="#1C1B16" strokeWidth="1.3" />
       </g>
     </svg>
@@ -28,8 +28,8 @@ function Visual() {
 function Brain() {
   return (
     <svg viewBox="0 0 104 104" aria-hidden="true">
-      <rect width="104" height="104" fill="#EEF0FA" />
-      <g fill="none" stroke="#4F46E5" strokeWidth="1.6" strokeLinecap="round" className="m dash">
+      <rect width="104" height="104" fill="var(--accent-wash)" />
+      <g fill="none" stroke="var(--accent)" strokeWidth="1.6" strokeLinecap="round" className="m dash">
         <path d="M28 36h22" />
         <path d="M50 36 68 52" />
         <path d="M28 68h24" />
@@ -38,7 +38,7 @@ function Brain() {
       </g>
       <g className="m node">
         <circle cx="26" cy="36" r="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
-        <circle cx="26" cy="36" r="2.2" fill="#4F46E5" />
+        <circle cx="26" cy="36" r="2.2" fill="var(--accent)" />
       </g>
       <g className="m node d1">
         <circle cx="52" cy="36" r="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
@@ -50,12 +50,12 @@ function Brain() {
       </g>
       <g className="m node d1">
         <circle cx="54" cy="70" r="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
-        <circle cx="54" cy="70" r="2.2" fill="#4F46E5" />
+        <circle cx="54" cy="70" r="2.2" fill="var(--accent)" />
       </g>
       <g className="m bob">
         <rect x="62" y="40" width="30" height="22" rx="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
         <path d="M70 62l-4 6 8-4" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.4" />
-        <rect x="68" y="47" width="16" height="2" rx="1" fill="#4F46E5" />
+        <rect x="68" y="47" width="16" height="2" rx="1" fill="var(--accent)" />
         <rect x="68" y="53" width="10" height="2" rx="1" fill="#8C8979" />
       </g>
     </svg>
@@ -72,7 +72,7 @@ function Software() {
       <circle cx="38" cy="26" r="2.2" fill="#74A84A" />
       <g fill="#F4F1E8">
         <rect className="m line" x="20" y="40" width="46" height="4" rx="1" />
-        <rect className="m line d1" x="20" y="50" width="34" height="4" rx="1" fill="#6366F1" />
+        <rect className="m line d1" x="20" y="50" width="34" height="4" rx="1" fill="var(--accent-hot)" />
         <rect className="m line d2" x="20" y="60" width="52" height="4" rx="1" />
         <rect className="m line d3" x="20" y="70" width="22" height="4" rx="1" fill="#74A84A" />
       </g>

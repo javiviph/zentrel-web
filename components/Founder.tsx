@@ -6,9 +6,7 @@ export function Founder() {
   return (
     <section id={founder.id} className="section" aria-labelledby="fundador-title">
       <div className="wrap">
-        <p className="font-pixel2 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-          {founder.eyebrow}
-        </p>
+        <p className="eyebrow">{founder.eyebrow}</p>
         <div className="founder-grid">
           <div className="founder-photo">
             <Image
@@ -24,7 +22,7 @@ export function Founder() {
           <div>
             <h2 id="fundador-title" className="founder-name">
               {founder.name}
-              <span className="text-accent">.</span>
+              <span className="text-accent-ink">.</span>
             </h2>
             <p className="founder-role">{founder.role}</p>
             <p className="founder-lead">{founder.lead}</p>
