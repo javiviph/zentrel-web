@@ -1,20 +1,21 @@
 import { SectionHeading } from "@/components/SectionHeading";
-import { cases } from "@/lib/content";
+import { cases, projectsSection } from "@/lib/content";
 
 export function WorkPlaceholders() {
   return (
-    <section id="prueba" className="section" aria-labelledby="prueba-title">
+    <section id={projectsSection.id} className="section" aria-labelledby="prueba-title">
       <div className="wrap">
         <div className="reveal">
           <SectionHeading
             id="prueba-title"
-            index="03"
+            eyebrow={projectsSection.eyebrow}
             title={
               <>
-                Productos reales. Resultados que <span className="mark">se notan.</span>
+                {projectsSection.titleBefore}
+                <span className="serif">{projectsSection.titleEm}</span>
               </>
             }
-            intro="Cuatro huecos. Los casos entran cuando se pueden contar."
+            intro={projectsSection.intro}
           />
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2">

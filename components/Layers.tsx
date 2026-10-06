@@ -1,20 +1,22 @@
 import { SectionHeading } from "@/components/SectionHeading";
-import { layers } from "@/lib/content";
+import { ServiceArt } from "@/components/ServiceArt";
+import { layers, servicesSection } from "@/lib/content";
 
 export function Layers() {
   return (
-    <section id="capas" className="section" aria-labelledby="capas-title">
+    <section id={servicesSection.id} className="section" aria-labelledby="capas-title">
       <div className="wrap">
         <div className="reveal">
           <SectionHeading
             id="capas-title"
-            index="01"
+            eyebrow={servicesSection.eyebrow}
             title={
               <>
-                Cómo <span className="serif">ayudamos</span>
+                {servicesSection.titleBefore}
+                <span className="serif">{servicesSection.titleEm}</span>
               </>
             }
-            intro="Tres capas. Una relación. Empezáis donde hace falta y escaláis sin cambiar de equipo."
+            intro={servicesSection.intro}
           />
         </div>
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -24,6 +26,7 @@ export function Layers() {
               className="card lift reveal flex h-full flex-col p-6 md:p-7"
               style={{ ["--d" as string]: `${140 + index * 90}ms` }}
             >
+              <ServiceArt kind={layer.art} />
               <p className="font-pixel text-[13px] tracking-[0.14em] text-accent">{layer.index}</p>
               <h3 className="mt-4 font-sans text-[1.65rem] font-extrabold leading-tight tracking-[-0.035em] text-ink">
                 {layer.name}

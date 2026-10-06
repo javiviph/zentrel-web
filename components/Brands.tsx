@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
-import { brands, type Brand } from "@/lib/content";
+import { brands, brandsSection, type Brand } from "@/lib/content";
 
 const faces = [
   "font-sans text-[1.35rem] font-extrabold tracking-[-0.04em]",
@@ -52,15 +52,16 @@ function Row({ clone = false }: { clone?: boolean }) {
 
 export function Brands() {
   return (
-    <section id="marcas" className="section" aria-labelledby="marcas-title">
+    <section id={brandsSection.id} className="section" aria-labelledby="marcas-title">
       <div className="wrap">
         <div className="reveal">
           <SectionHeading
             id="marcas-title"
-            index="02"
+            eyebrow={brandsSection.eyebrow}
             title={
               <>
-                Marcas con las que <span className="serif">hemos trabajado.</span>
+                {brandsSection.titleBefore}
+                <span className="serif">{brandsSection.titleEm}</span>
               </>
             }
           />

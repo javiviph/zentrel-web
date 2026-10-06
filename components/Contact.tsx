@@ -1,33 +1,59 @@
-import { contactEmail, mailtoHref } from "@/lib/content";
+"use client";
 
-export function Contact() {
+import { useState } from "react";
+import { contactEmail, contactSection, mailtoHref, voiceCallEnabled } from "@/lib/content";
+
+type ContactProps = {
+  /**
+   * TODO(voice-call): pass the function that opens the AI voice call.
+   * It runs only when `voiceCallEnabled` is true. Until then the button explains that the call is not live yet.
+   */
+  onStartVoiceCall?: () => void;
+};
+
+export function Contact({ onStartVoiceCall }: ContactProps) {
+  const [soon, setSoon] = useState(false);
+
+  function startVoiceCall() {
+    if (voiceCallEnabled && onStartVoiceCall) {
+      onStartVoiceCall();
+      return;
+    }
+    setSoon(true);
+  }
+
   return (
-    <section id="contacto" className="section" aria-labelledby="contacto-title">
+    <section id={contactSection.id} className="section" aria-labelledby="contacto-title">
       <div className="wrap">
         <div className="card reveal px-6 py-10 shadow-[8px_10px_0_rgba(28,27,22,0.12)] md:px-12 md:py-14">
-          <p className="font-pixel text-[11px] uppercase tracking-[0.16em] text-accent">06</p>
-          <div className="mt-4 grid items-end gap-8 lg:grid-cols-[minmax(0,1.4fr)_auto] lg:gap-12">
-            <div>
-              <h2
-                id="contacto-title"
-                className="max-w-xl font-sans text-[clamp(2.15rem,4.6vw,3.6rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-ink"
-              >
-                Construyamos algo que <span className="mark">se note.</span>
-              </h2>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink2">
-                Cuéntanos qué queréis vender u operar mejor. Os diremos, sin rodeos, si encajamos.
-              </p>
-            </div>
-            <div className="flex flex-col items-start gap-4 lg:items-end">
-              <a href={mailtoHref} className="btn btn-primary">
-                Hablemos
-                <span aria-hidden="true">→</span>
-              </a>
-              <a href={`mailto:${contactEmail}`} className="font-pixel2 text-lg text-accent underline decoration-accent/30 underline-offset-4 hover:text-accent2">
+          <p className="font-pixel2 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+            {contactSection.eyebrow}
+          </p>
+          <h2
+            id="contacto-title"
+            className="mt-4 max-w-xl font-sans text-[clamp(2.15rem,4.6vw,3.6rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-ink"
+          >
+            {contactSection.titleBefore}
+            <span className="serif">{contactSection.titleEm}</span>
+          </h2>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink2">{contactSection.body}</p>
+          <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+            <button type="button" className="btn btn-primary" data-voice-call="pending" onClick={startVoiceCall}>
+              {contactSection.cta}
+              <span aria-hidden="true">→</span>
+            </button>
+            <a href={mailtoHref} className="text-link">
+              {contactEmail}
+            </a>
+          </div>
+          {soon ? (
+            <p role="status" className="mt-4 max-w-md text-sm leading-relaxed text-ink2">
+              {contactSection.soonLead}{" "}
+              <a href={`mailto:${contactEmail}`} className="font-semibold text-ink underline decoration-accent/40 underline-offset-2">
                 {contactEmail}
               </a>
-            </div>
-          </div>
+            </p>
+          ) : null}
         </div>
       </div>
     </section>

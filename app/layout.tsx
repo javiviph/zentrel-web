@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Pixelify_Sans, Plus_Jakarta_Sans, Silkscreen } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { siteUrl } from "@/lib/content";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -33,21 +34,25 @@ const pixel2 = Pixelify_Sans({
   display: "swap",
 });
 
+const description =
+  "Asistentes, automatizaciones y herramientas a medida, webs, tours 3D y configuradores cuando hacen falta. Estudio sénior, de principio a fin.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Zentrel — Creamos digital que se nota en el negocio",
+    default: "Zentrel — Creamos experiencias tecnológicas que enamoran a tus clientes",
     template: "%s · Zentrel",
   },
-  description:
-    "Asistentes, automatizaciones y herramientas a medida para pymes. Webs, tours 3D y configuradores cuando hacen falta. Estudio sénior, de principio a fin.",
+  description,
   applicationName: "Zentrel",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Zentrel — Creamos digital que se nota en el negocio",
-    description:
-      "Asistentes, automatizaciones y herramientas a medida. Diseñado y construido de principio a fin por un estudio sénior.",
+    title: "Zentrel — Creamos experiencias tecnológicas que enamoran a tus clientes",
+    description,
     locale: "es_ES",
     type: "website",
     siteName: "Zentrel",
+    url: "/",
   },
 };
 
