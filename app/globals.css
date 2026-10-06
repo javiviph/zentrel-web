@@ -63,22 +63,26 @@ body {
   font-weight: 500;
 }
 
-/* Grid only behind the hero headline; it fades down the page from there. */
+/*
+  Paper grid pinned to the viewport, not the document, so the top of the
+  screen keeps the texture while scrolling. It fades out by ~60vh so copy
+  lower in the viewport stays clear. position: fixed (not
+  background-attachment: fixed) avoids the iOS scroll hitch. The layer sits
+  in body's stacking context at z-index -1: above the paper fill, behind
+  sections, the header, and any solid cards.
+*/
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   z-index: -1;
   pointer-events: none;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 920px;
+  inset: 0;
   background-image:
     linear-gradient(rgba(28, 27, 22, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(28, 27, 22, 0.055) 1px, transparent 1px);
   background-size: 56px 56px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0px, #000 220px, transparent 700px);
-  mask-image: linear-gradient(to bottom, #000 0px, #000 220px, transparent 700px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 18%, transparent 60%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 18%, transparent 60%);
 }
 
 ::selection {
