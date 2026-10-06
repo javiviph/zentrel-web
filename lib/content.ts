@@ -204,6 +204,19 @@ export const javierPortrait = {
   alt: "Retrato pixel-art de Javier Peñas: traje gris, gafas y fondo gris claro.",
 } as const;
 
+export type Portrait = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
+const studioFrame = { width: 597, height: 800 } as const;
+
+function studioPortrait(slug: string, alt: string): Portrait {
+  return { ...studioFrame, src: `/team/${slug}.webp`, alt };
+}
+
 export type Teammate = {
   initials: string;
   name: string;
@@ -211,8 +224,8 @@ export type Teammate = {
   bio: string;
   /** Estella is the only teammate presented openly as AI. */
   ai?: boolean;
-  /** Public path to a portrait. Only set when a real image exists. */
-  portrait?: string;
+  /** Pixel-art portrait. Initials show only when this is absent. */
+  portrait?: Portrait;
   tone: string;
   on: string;
 };
@@ -223,7 +236,7 @@ export const team: Teammate[] = [
     name: "Javier",
     role: "CEO & Polímata",
     bio: "El polímata que conecta los puntos y rumia tu caso hasta solucionarlo.",
-    portrait: javierPortrait.src,
+    portrait: javierPortrait,
     tone: "#1C1B16",
     on: "#F4F1E8",
   },
@@ -232,6 +245,7 @@ export const team: Teammate[] = [
     name: "Susana",
     role: "Diseño",
     bio: "Hace que las cosas no solo funcionen, sino que enamoren a primera vista.",
+    portrait: studioPortrait("susana", "Retrato pixel art de Susana, Diseño"),
     tone: "#A34B32",
     on: "#FBF9F2",
   },
@@ -240,6 +254,7 @@ export const team: Teammate[] = [
     name: "Rubén",
     role: "Experiencias virtuales / 3D",
     bio: "Construye las dimensiones que el resto aún no podemos ver.",
+    portrait: studioPortrait("ruben", "Retrato pixel art de Rubén, Experiencias virtuales / 3D"),
     tone: "#2F5D73",
     on: "#FBF9F2",
   },
@@ -248,6 +263,7 @@ export const team: Teammate[] = [
     name: "Luis",
     role: "Tecnología",
     bio: "Traduce ideas imposibles al idioma del código y la estabilidad.",
+    portrait: studioPortrait("luis", "Retrato pixel art de Luis, Tecnología"),
     tone: "#4F46E5",
     on: "#FBF9F2",
   },
@@ -256,6 +272,7 @@ export const team: Teammate[] = [
     name: "Andrea",
     role: "Automatizaciones",
     bio: "Le devuelve tiempo al reloj haciendo que los procesos funcionen de verdad.",
+    portrait: studioPortrait("andrea", "Retrato pixel art de Andrea, Automatizaciones"),
     tone: "#3D6B32",
     on: "#FBF9F2",
   },
@@ -265,6 +282,7 @@ export const team: Teammate[] = [
     role: "Compañera IA (Contenido)",
     bio: "Nuestra creadora de contenido digital. No toma café, pero genera ideas a la velocidad de la luz.",
     ai: true,
+    portrait: studioPortrait("estella", "Retrato pixel art de Estella, Compañera IA, Contenido"),
     tone: "#FBF9F2",
     on: "#4F46E5",
   },
