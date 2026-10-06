@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import {
   contactEmail,
+  javierPortrait,
   mailtoHref,
 } from "@/lib/content";
 import {
@@ -278,12 +280,18 @@ export function JavierCv() {
               </button>
             </div>
           </div>
-          {/* TODO(photo): replace this initials plate when a portrait is exported. */}
           <div className="cv-art">
             <span className="cv-chip-f a">{javierHero.chips.place}</span>
-            <div className="cv-portrait" aria-hidden="true">
-              <span className="serif">JP</span>
-            </div>
+            <Image
+              src={javierPortrait.src}
+              alt={javierPortrait.alt}
+              width={javierPortrait.width}
+              height={javierPortrait.height}
+              sizes="(max-width: 860px) 320px, 420px"
+              priority
+              unoptimized
+              className="pixel-portrait cv-shot"
+            />
             <span className="cv-chip-f b">{javierHero.chips.focus}</span>
           </div>
         </div>

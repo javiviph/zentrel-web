@@ -1,7 +1,22 @@
+import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
-import { team, teamSection, type Teammate } from "@/lib/content";
+import { javierPortrait, team, teamSection, type Teammate } from "@/lib/content";
 
 function Avatar({ person }: { person: Teammate }) {
+  if (person.portrait) {
+    return (
+      <Image
+        src={person.portrait}
+        alt={javierPortrait.alt}
+        width={javierPortrait.width}
+        height={javierPortrait.height}
+        sizes="72px"
+        unoptimized
+        className="pixel-portrait team-shot"
+      />
+    );
+  }
+
   return (
     <div
       className={`grid size-[72px] place-items-center rounded-full border-[1.5px] ${

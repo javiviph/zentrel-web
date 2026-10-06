@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { founder } from "@/lib/content";
+import { founder, javierPortrait } from "@/lib/content";
 
 export function Founder() {
   return (
@@ -9,11 +10,16 @@ export function Founder() {
           {founder.eyebrow}
         </p>
         <div className="founder-grid">
-          {/* TODO(photo): initials until a portrait is exported. Do not invent a face. */}
           <div className="founder-photo">
-            <div className="founder-plate" role="img" aria-label="Javier Peñas. Foto pendiente: se muestran las iniciales.">
-              <span className="serif">JP</span>
-            </div>
+            <Image
+              src={javierPortrait.src}
+              alt={javierPortrait.alt}
+              width={javierPortrait.width}
+              height={javierPortrait.height}
+              sizes="(max-width: 760px) 320px, 460px"
+              unoptimized
+              className="pixel-portrait founder-shot"
+            />
           </div>
           <div>
             <h2 id="fundador-title" className="founder-name">

@@ -198,6 +198,13 @@ export const teamSection = {
     "Somos un estudio sénior. Sin capas de cuenta, sin juniors aprendiendo con vuestro presupuesto.",
 } as const;
 
+export const javierPortrait = {
+  src: "/javier-penas.webp",
+  width: 880,
+  height: 1206,
+  alt: "Retrato pixel-art de Javier Peñas: traje gris, gafas y fondo gris claro.",
+} as const;
+
 export type Teammate = {
   initials: string;
   name: string;
@@ -205,6 +212,8 @@ export type Teammate = {
   bio: string;
   /** Estella is the only teammate presented openly as AI. */
   ai?: boolean;
+  /** Public path to a portrait. Only set when a real image exists. */
+  portrait?: string;
   tone: string;
   on: string;
 };
@@ -215,6 +224,7 @@ export const team: Teammate[] = [
     name: "Javier",
     role: "CEO & Polímata",
     bio: "El polímata que conecta los puntos y rumia tu caso hasta solucionarlo.",
+    portrait: javierPortrait.src,
     tone: "#1C1B16",
     on: "#F4F1E8",
   },

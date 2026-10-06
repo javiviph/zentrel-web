@@ -3,14 +3,13 @@
  * Source of truth: the exported CV (Notion «Javier Peñas CV ES», edited 2026-10-05).
  * Do not add employers, metrics, dates, levels or links that are not in that CV.
  *
- * TODO(photo): no portrait file was exported. The page uses initials.
  * TODO(cv-links): the CV has no GitHub, personal site, X/Twitter or other profiles — only LinkedIn.
  * TODO(cv-dates): education entries have no dates. Pearson has a year (2026) and no start month.
  * TODO(cv-languages): ES | ENG | FR, with no levels.
  * Phone and the personal email from the CV stay off this page. Public contact is the studio address.
  */
 
-import { contactEmail, siteUrl } from "@/lib/content";
+import { contactEmail, javierPortrait, siteUrl } from "@/lib/content";
 
 export const javierLinkedIn = "https://www.linkedin.com/in/javiux";
 
@@ -361,6 +360,7 @@ export const javierJsonLd = {
   email: contactEmail,
   url: `${siteUrl}${javierMeta.path}`,
   sameAs: [javierLinkedIn],
+  image: `${siteUrl}${javierPortrait.src}`,
   homeLocation: {
     "@type": "Place",
     name: javierLocation,

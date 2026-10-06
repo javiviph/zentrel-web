@@ -236,7 +236,7 @@ export function Banner() {
   useCountUp(rootRef);
 
   return (
-    <section className="section" style={{ paddingTop: 0 }} aria-label={banner.eyebrow}>
+    <section id={banner.id} className="section" style={{ paddingTop: 0 }} aria-label={banner.eyebrow}>
       <div className="wrap">
         <div className="banner reveal" ref={rootRef}>
           <canvas ref={canvasRef} className="banner-sky" aria-hidden="true" />

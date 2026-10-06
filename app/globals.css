@@ -624,21 +624,28 @@ body::before {
   transform: rotate(0) scale(1.01);
 }
 
-.founder-plate {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 4 / 5;
-  background:
-    linear-gradient(rgba(28, 27, 22, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 27, 22, 0.06) 1px, transparent 1px),
-    linear-gradient(160deg, #d7e4f2, #f6e3c0 55%, #c5d7a4);
-  background-size: 18px 18px, 18px 18px, auto;
+.pixel-portrait {
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
 
-.founder-plate span {
-  font-size: clamp(4.5rem, 8vw, 7rem);
-  line-height: 1;
-  color: var(--ink);
+.founder-shot,
+.cv-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.team-shot {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  object-position: center 16%;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
 }
 
 .founder-name {
@@ -682,8 +689,8 @@ body::before {
   display: block;
   width: 100%;
   height: auto;
-  image-rendering: pixelated;
   image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
 
 .factory-shade {
@@ -855,22 +862,6 @@ body::before {
   transform: rotate(0) scale(1.01);
 }
 
-.cv-portrait {
-  display: grid;
-  aspect-ratio: 4 / 5;
-  place-items: center;
-  background:
-    linear-gradient(rgba(28, 27, 22, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 27, 22, 0.07) 1px, transparent 1px),
-    linear-gradient(165deg, #d5e4f2, #f6e3c0 50%, #b7d18a);
-  background-size: 16px 16px, 16px 16px, auto;
-}
-
-.cv-portrait span {
-  font-size: clamp(4.5rem, 8vw, 6.5rem);
-  line-height: 0.9;
-  color: var(--ink);
-}
 
 .cv-chip-f {
   position: absolute;
