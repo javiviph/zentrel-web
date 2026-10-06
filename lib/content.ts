@@ -174,18 +174,17 @@ export const cases: CaseSlot[] = [
 ];
 
 /**
- * TODO(banner-copy): provisional strip. Same behavior as the Yenze figures banner
- * (pixel sky + count-up). Replace eyebrow, caption and figures when the final line exists.
- * Do not drop in unverified totals (retention, industries, etc.).
+ * Home figures strip. The brand count is `brands.length` so it stays
+ * equal to the logos in the marcas section.
  */
 export const banner = {
   id: "cifras",
   eyebrow: "En cifras",
-  caption: "El oficio, sin adorno.",
+  caption: "Lo entregado, en tres cifras.",
   stats: [
-    { value: 13, suffix: "", label: "Años creando" },
-    { value: 200, suffix: "+", label: "Proyectos" },
-    { value: 3, suffix: "", label: "Niveles de trabajo" },
+    { value: 200, prefix: "+", label: "proyectos entregados" },
+    { value: brands.length, prefix: "", label: "marcas enterprise" },
+    { value: 6, prefix: "", label: "sectores" },
   ],
 } as const;
 

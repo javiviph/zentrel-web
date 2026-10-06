@@ -20,6 +20,9 @@
   --grass2: #538537;
   --clay: #e0584b;
   --gold: #f2c14e;
+  /* Warm orange for the figures banner. Ink on both stops stays above AA. */
+  --banner: #e8642c;
+  --banner-hot: #f26b2e;
   --r: 22px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow: 2px 2px 0 rgba(28, 27, 22, 0.16);
@@ -497,8 +500,8 @@ body::before {
   position: relative;
   overflow: hidden;
   border-radius: var(--r);
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--banner);
+  color: var(--ink);
   padding: 44px clamp(24px, 4vw, 56px) 48px;
   box-shadow: 6px 6px 0 rgba(28, 27, 22, 0.14);
 }
@@ -510,8 +513,8 @@ body::before {
   z-index: 1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(28, 27, 22, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 27, 22, 0.06) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
@@ -536,7 +539,7 @@ body::before {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #c7d2fe;
+  color: var(--ink);
 }
 
 .banner-head {
@@ -552,7 +555,7 @@ body::before {
   font-family: var(--font-zentrel-serif), serif;
   font-style: italic;
   font-size: 1.4rem;
-  color: rgba(244, 241, 232, 0.82);
+  color: var(--ink);
 }
 
 .banner-grid {
@@ -577,7 +580,7 @@ body::before {
   top: 14%;
   bottom: 14%;
   width: 2px;
-  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0 4px, transparent 4px 8px);
+  background: repeating-linear-gradient(180deg, rgba(28, 27, 22, 0.28) 0 4px, transparent 4px 8px);
 }
 
 .banner-num {
@@ -589,17 +592,13 @@ body::before {
   font-variant-numeric: tabular-nums;
 }
 
-.banner-num .suf {
-  color: var(--accent2);
-}
-
 .banner-label {
   margin-top: 14px;
   font-family: var(--font-zentrel-pixel), monospace;
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(244, 241, 232, 0.66);
+  color: var(--ink);
 }
 
 .founder-grid {

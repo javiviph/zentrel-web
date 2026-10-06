@@ -13,17 +13,18 @@ function paintStill(canvas: HTMLCanvasElement) {
   canvas.width = width * dpr;
   canvas.height = height * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const tone = getComputedStyle(canvas);
+  const hot = tone.getPropertyValue("--banner-hot").trim() || "#f26b2e";
+  const base = tone.getPropertyValue("--banner").trim() || "#e8642c";
   const sky = ctx.createLinearGradient(0, 0, 0, height);
-  sky.addColorStop(0, "#181641");
-  sky.addColorStop(0.55, "#0d0b24");
-  sky.addColorStop(1, "#080713");
+  sky.addColorStop(0, hot);
+  sky.addColorStop(1, base);
   ctx.fillStyle = sky;
   ctx.fillRect(0, 0, width, height);
 }
 
 /**
- * Pixel night sky, same behavior as the Yenze figures strip:
- * drifting clouds, twinkling stars, an occasional shooting star.
+ * Warm pixel field on the orange banner: drifting clouds and soft specks.
  * Pauses off-screen. A still gradient when motion is reduced.
  */
 function usePixelSky(canvasRef: RefObject<HTMLCanvasElement | null>) {
@@ -41,15 +42,15 @@ function usePixelSky(canvasRef: RefObject<HTMLCanvasElement | null>) {
     let height = 0;
     let stars: { x: number; y: number; s: number; p: number; sp: number; b: number }[] = [];
     let clouds: { x: number; y: number; sc: number; vx: number }[] = [];
-    let shoot: { x: number; y: number; vx: number; vy: number; life: number } | null = null;
-    let shootIn = 140;
+    let hot = "#f26b2e";
+    let base = "#e8642c";
     let frame = 0;
     let running = false;
     let raf = 0;
 
     function build() {
       stars = [];
-      const count = Math.floor(width / 11);
+      const count = Math.floor(width / 22);
       for (let i = 0; i < count; i += 1) {
         stars.push({
           x: Math.random() * width,
@@ -78,6 +79,9 @@ function usePixelSky(canvasRef: RefObject<HTMLCanvasElement | null>) {
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const tone = getComputedStyle(canvas);
+      hot = tone.getPropertyValue("--banner-hot").trim() || hot;
+      base = tone.getPropertyValue("--banner").trim() || base;
       if (reduce) {
         paintStill(canvas);
         return;
@@ -91,7 +95,7 @@ function usePixelSky(canvasRef: RefObject<HTMLCanvasElement | null>) {
 
     function drawCloud(cloud: (typeof clouds)[number]) {
       const unit = 6 * cloud.sc;
-      ctx.fillStyle = "rgba(124,130,220,0.10)";
+      ctx.fillStyle = "rgba(244,241,232,0.16)";
       const cells = [
         [1, 0],
         [2, 0],
@@ -117,9 +121,8 @@ function usePixelSky(canvasRef: RefObject<HTMLCanvasElement | null>) {
       raf = requestAnimationFrame(tick);
       frame += 0.03;
       const sky = ctx.createLinearGradient(0, 0, 0, height);
-      sky.addColorStop(0, "#181641");
-      sky.addColorStop(0.55, "#0d0b24");
-      sky.addColorStop(1, "#080713");
+      sky.addColorStop(0, hot);
+      sky.addColorStop(1, base);
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, width, height);
       clouds.forEach((cloud) => {
@@ -128,29 +131,10 @@ function usePixelSky(canvasRef: RefObject<HTMLCanvasElement | null>) {
         drawCloud(cloud);
       });
       stars.forEach((star) => {
-        const alpha = Math.max(0, star.b * (0.4 + 0.6 * Math.sin(frame * star.sp + star.p)));
-        ctx.fillStyle = `rgba(223,227,255,${alpha.toFixed(3)})`;
+        const alpha = 0.14 + star.b * 0.16 * (0.5 + 0.5 * Math.sin(frame * star.sp + star.p));
+        ctx.fillStyle = `rgba(244,241,232,${alpha.toFixed(3)})`;
         px(star.x, star.y, star.s, star.s);
       });
-      if (shoot) {
-        shoot.x += shoot.vx;
-        shoot.y += shoot.vy;
-        shoot.life -= 1;
-        for (let k = 0; k < 8; k += 1) {
-          ctx.fillStyle = `rgba(234,236,255,${0.62 - k * 0.07})`;
-          px(shoot.x - shoot.vx * k * 0.9, shoot.y - shoot.vy * k * 0.9, 3, 3);
-        }
-        if (shoot.life <= 0) shoot = null;
-      } else if ((shootIn -= 1) <= 0) {
-        shootIn = 200 + Math.floor(Math.random() * 300);
-        shoot = {
-          x: -20,
-          y: 20 + Math.random() * height * 0.4,
-          vx: 3.4 + Math.random() * 1.4,
-          vy: 1 + Math.random() * 0.7,
-          life: 80,
-        };
-      }
     }
 
     function start() {
@@ -248,8 +232,8 @@ export function Banner() {
             {banner.stats.map((stat) => (
               <li key={stat.label}>
                 <p className="banner-num">
+                  {stat.prefix ? <span className="pre">{stat.prefix}</span> : null}
                   <span data-count={stat.value}>{stat.value.toLocaleString("es-ES")}</span>
-                  {stat.suffix ? <span className="suf">{stat.suffix}</span> : null}
                 </p>
                 <p className="banner-label">{stat.label}</p>
               </li>
