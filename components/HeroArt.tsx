@@ -61,11 +61,11 @@ export function HeroArt() {
       </g>
       <g>
         <circle cx="36" cy="444" r="5" fill="#E07A5F" />
-        <circle cx="58" cy="454" r="4" fill="#4F46E5" />
+        <circle cx="58" cy="454" r="4" fill="var(--accent)" />
         <circle cx="92" cy="452" r="4.5" fill="#F2C14D" />
         <circle cx="560" cy="450" r="5" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.2" />
         <circle cx="588" cy="442" r="4.5" fill="#E07A5F" />
-        <circle cx="612" cy="456" r="4" fill="#4F46E5" />
+        <circle cx="612" cy="456" r="4" fill="var(--accent)" />
       </g>
 
       <rect x="128" y="356" width="384" height="12" rx="4" fill="#6B4528" opacity="0.28" />
@@ -76,7 +76,7 @@ export function HeroArt() {
 
       <g transform="translate(132 286) rotate(-8)">
         <rect width="86" height="58" rx="8" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="2.25" />
-        <circle cx="24" cy="30" r="10" fill="#4F46E5" />
+        <circle cx="24" cy="30" r="10" fill="var(--accent)" />
         <circle cx="44" cy="30" r="10" fill="#E07A5F" />
         <circle cx="64" cy="30" r="10" fill="#74A84A" />
       </g>
@@ -84,7 +84,7 @@ export function HeroArt() {
       <g>
         <rect x="196" y="214" width="176" height="118" rx="10" fill="#EAD9B8" stroke="#1C1B16" strokeWidth="2.4" />
         <rect x="208" y="226" width="152" height="80" rx="4" fill="#241F1A" />
-        <rect x="220" y="242" width="72" height="16" rx="8" fill="#4F46E5" />
+        <rect x="220" y="242" width="72" height="16" rx="8" fill="var(--accent)" />
         <rect x="268" y="268" width="78" height="16" rx="8" fill="#F4F1E8" />
         <circle cx="284" cy="316" r="3" fill="#1C1B16" opacity="0.35" />
       </g>
@@ -92,7 +92,7 @@ export function HeroArt() {
       <g>
         <rect x="372" y="230" width="132" height="102" rx="8" fill="#F7F1E4" stroke="#1C1B16" strokeWidth="2.4" />
         <path d="M438 252 L470 268 L438 284 L406 268 Z" fill="#D5E4F2" stroke="#1C1B16" strokeWidth="1.6" />
-        <path d="M438 284 L470 268 L470 300 L438 316 Z" fill="#4F46E5" stroke="#1C1B16" strokeWidth="1.6" />
+        <path d="M438 284 L470 268 L470 300 L438 316 Z" fill="var(--accent)" stroke="#1C1B16" strokeWidth="1.6" />
         <path d="M438 284 L406 268 L406 300 L438 316 Z" fill="#74A84A" stroke="#1C1B16" strokeWidth="1.6" />
       </g>
 

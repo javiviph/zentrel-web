@@ -15,7 +15,7 @@ export function Process() {
               className="card lift reveal p-6 md:p-8"
               style={{ ["--d" as string]: `${100 + index * 80}ms` }}
             >
-              <p className="font-pixel text-[13px] tracking-[0.14em] text-accent">
+              <p className="font-pixel text-[13px] tracking-[0.14em] text-accent-ink">
                 {String(index + 1).padStart(2, "0")}
               </p>
               <p className="mt-4 max-w-md font-sans text-[1.55rem] font-extrabold leading-snug tracking-[-0.035em] text-ink">

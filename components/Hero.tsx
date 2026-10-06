@@ -7,10 +7,7 @@ export function Hero() {
     <section className="wrap pb-16 pt-8 md:pb-24 md:pt-14">
       <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-8">
         <div className="reveal max-w-xl">
-          <p className="flex items-center gap-2.5 font-pixel2 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
-            <span className="size-2 shrink-0 bg-accent" aria-hidden="true" />
-            {hero.eyebrow}
-          </p>
+          <p className="eyebrow">{hero.eyebrow}</p>
           <h1 className="mt-5 font-sans text-[clamp(2.35rem,4.5vw,4.15rem)] font-extrabold leading-[0.98] tracking-[-0.048em] text-ink">
             {hero.lines.map((line) => (
               <span key={line.map((part) => part.text).join("")} className="block">
@@ -56,7 +53,7 @@ export function Hero() {
           <div className="relative overflow-hidden rounded-[22px] border-[1.5px] border-ink bg-card">
             <HeroArt />
             <span className="chip absolute left-4 top-4">
-              <span className="size-1.5 bg-accent" aria-hidden="true" />
+              <span className="size-1.5 bg-accent-ink" aria-hidden="true" />
               {hero.chips.live}
             </span>
             <span className="chip absolute bottom-4 right-4">{hero.chips.since}</span>

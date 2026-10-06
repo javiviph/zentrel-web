@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function ConfiguradorDemoPage() {
   return (
     <main className="wrap flex min-h-[70vh] flex-col justify-center py-20">
-      <p className="font-pixel text-[11px] uppercase tracking-[0.16em] text-accent">Demo · en el taller</p>
+      <p className="font-pixel text-[11px] uppercase tracking-[0.16em] text-accent-ink">Demo · en el taller</p>
       <h1 className="mt-3 max-w-2xl font-sans text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-ink">
         El configurador <span className="serif">todavía no está.</span>
       </h1>

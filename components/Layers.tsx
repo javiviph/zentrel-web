@@ -27,7 +27,7 @@ export function Layers() {
               style={{ ["--d" as string]: `${140 + index * 90}ms` }}
             >
               <ServiceArt kind={layer.art} />
-              <p className="font-pixel text-[13px] tracking-[0.14em] text-accent">{layer.index}</p>
+              <p className="font-pixel text-[13px] tracking-[0.14em] text-accent-ink">{layer.index}</p>
               <h3 className="mt-4 font-sans text-[1.65rem] font-extrabold leading-tight tracking-[-0.035em] text-ink">
                 {layer.name}
               </h3>

@@ -20,7 +20,7 @@ function Avatar({ person }: { person: Teammate }) {
   return (
     <div
       className={`grid size-[72px] place-items-center rounded-full border-[1.5px] ${
-        person.ai ? "border-dashed border-accent" : "border-ink"
+        person.ai ? "border-dashed border-accent-ink" : "border-ink"
       }`}
       style={{ background: person.tone, color: person.on }}
       aria-hidden="true"
@@ -54,7 +54,7 @@ export function Team() {
             <li key={person.name} className="reveal" style={{ ["--d" as string]: `${100 + index * 70}ms` }}>
               <article
                 className={`card lift flex h-full flex-col p-6 ${
-                  person.ai ? "ring-2 ring-accent ring-offset-2 ring-offset-paper" : ""
+                  person.ai ? "ring-2 ring-accent-ink ring-offset-2 ring-offset-paper" : ""
                 }`}
               >
                 <Avatar person={person} />

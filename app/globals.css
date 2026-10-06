@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 /*
-  Zentrel tokens. Warm paper, hard offset shadows, indigo used sparingly.
+  Zentrel tokens. Warm paper, hard offset shadows, orange used sparingly.
   Source values live here so a future theme tweak is one file.
+
+  --accent is the En cifras banner orange. Text, focus, and the small
+  eyebrow square use --accent-ink: the same hue darkened to clear WCAG AA
+  on paper (4.8:1) and paper2 (4.5:1). The banner orange itself is 3.0:1
+  on paper (2.96:1, just under the 3:1 UI bar), so it stays on fills with ink on top (5.2:1). --accent-hot is
+  the lighter stop, including text on the dark terminal and metric cards
+  (5.7:1 on ink).
 */
 :root {
   --paper: #f4f1e8;
@@ -13,8 +20,6 @@
   --muted: #8c8979;
   --line: rgba(28, 27, 22, 0.12);
   --line2: rgba(28, 27, 22, 0.22);
-  --accent: #4f46e5;
-  --accent2: #6366f1;
   --sky: #6e94c7;
   --grass: #74a84a;
   --grass2: #538537;
@@ -23,6 +28,11 @@
   /* Warm orange for the figures banner. Ink on both stops stays above AA. */
   --banner: #e8642c;
   --banner-hot: #f26b2e;
+  --accent: var(--banner);
+  --accent-hot: var(--banner-hot);
+  --accent-ink: #b84514;
+  --accent-wash: #f8e4d4;
+  --accent2: var(--banner-hot);
   --r: 22px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow: 2px 2px 0 rgba(28, 27, 22, 0.16);
@@ -39,6 +49,8 @@
   --color-line: var(--line);
   --color-line2: var(--line2);
   --color-accent: var(--accent);
+  --color-accent-hot: var(--accent-hot);
+  --color-accent-ink: var(--accent-ink);
   --color-accent2: var(--accent2);
   --color-sky: var(--sky);
   --color-grass: var(--grass);
@@ -63,31 +75,35 @@ body {
   font-weight: 500;
 }
 
-/* Grid only behind the hero headline; it fades down the page from there. */
+/*
+  Paper grid pinned to the viewport, not the document, so the top of the
+  screen keeps the texture while scrolling. It fades out by ~60vh so copy
+  lower in the viewport stays clear. position: fixed (not
+  background-attachment: fixed) avoids the iOS scroll hitch. The layer sits
+  in body's stacking context at z-index -1: above the paper fill, behind
+  sections, the header, and any solid cards.
+*/
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   z-index: -1;
   pointer-events: none;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 920px;
+  inset: 0;
   background-image:
     linear-gradient(rgba(28, 27, 22, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(28, 27, 22, 0.055) 1px, transparent 1px);
   background-size: 56px 56px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0px, #000 220px, transparent 700px);
-  mask-image: linear-gradient(to bottom, #000 0px, #000 220px, transparent 700px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 18%, transparent 60%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 18%, transparent 60%);
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--accent-ink);
   color: var(--paper);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-ink);
   outline-offset: 3px;
 }
 
@@ -140,10 +156,33 @@ body::before {
 .mark {
   background-image: linear-gradient(
     transparent 58%,
-    rgba(79, 70, 229, 0.22) 58%,
-    rgba(79, 70, 229, 0.22) 90%,
+    color-mix(in srgb, var(--accent) 32%, transparent) 58%,
+    color-mix(in srgb, var(--accent) 32%, transparent) 90%,
     transparent 90%
   );
+}
+
+/* Numbered section labels: the number is gone; a 9px orange pixel sits on the cap line. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  font-family: var(--font-zentrel-pixel2), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background: var(--accent-ink);
 }
 
 @layer components {
@@ -305,12 +344,12 @@ body::before {
   font-size: 1.15rem;
   color: var(--ink);
   text-decoration: none;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent-ink);
   padding-bottom: 2px;
 }
 
 .text-link:hover {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .hero-proof {
@@ -661,7 +700,7 @@ body::before {
   font-family: var(--font-zentrel-pixel2), sans-serif;
   font-weight: 600;
   font-size: 1.05rem;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .founder-lead {
@@ -818,7 +857,7 @@ body::before {
   font-family: var(--font-zentrel-pixel2), sans-serif;
   font-weight: 600;
   font-size: clamp(1.05rem, 2vw, 1.35rem);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .cv-role .sep {
@@ -879,7 +918,7 @@ body::before {
 .cv-chip-f.a {
   top: 14px;
   left: 14px;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .cv-chip-f.b {
@@ -899,12 +938,11 @@ body::before {
   margin-bottom: 30px;
 }
 
-.cv-head .k {
+.cv-head .pixel {
+  width: 9px;
+  height: 9px;
   flex: none;
-  font-family: var(--font-zentrel-pixel), monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  color: var(--accent);
+  background: var(--accent-ink);
 }
 
 .cv-head h2 {
@@ -1266,7 +1304,7 @@ body::before {
   font-family: var(--font-zentrel-pixel2), sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .job-meta {
@@ -1311,7 +1349,7 @@ body::before {
 }
 
 .job.open .job-chev svg {
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .job-body {
@@ -1350,7 +1388,7 @@ body::before {
 }
 
 .job-body li::marker {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .cv-links {
@@ -1363,7 +1401,7 @@ body::before {
 .cv-links a {
   font-family: var(--font-zentrel-pixel2), sans-serif;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-ink);
   text-underline-offset: 3px;
 }
 
@@ -1424,7 +1462,7 @@ body::before {
   border: 1.5px solid var(--ink);
   border-radius: 11px;
   background: var(--paper2);
-  color: var(--accent);
+  color: var(--accent-ink);
   box-shadow: 2px 2px 0 rgba(28, 27, 22, 0.18);
 }
 
@@ -1442,7 +1480,7 @@ body::before {
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .cv-subhead,

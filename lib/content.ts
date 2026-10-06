@@ -68,7 +68,7 @@ export const proof = [
 
 export const servicesSection = {
   id: "que-hacemos",
-  eyebrow: "01 — QUÉ HACEMOS",
+  eyebrow: "Qué hacemos",
   titleBefore: "Creamos experiencias tecnológicas avanzadas adaptadas a ",
   titleEm: "tu caso.",
   intro:
@@ -111,7 +111,7 @@ export const layers: Layer[] = [
 
 export const brandsSection = {
   id: "marcas",
-  eyebrow: "02 — Marcas",
+  eyebrow: "Marcas",
   titleBefore: "Marcas con las que ",
   titleEm: "hemos trabajado.",
 } as const;
@@ -152,7 +152,7 @@ export const brands: Brand[] = [
 
 export const projectsSection = {
   id: "proyectos",
-  eyebrow: "03 — Algunos proyectos",
+  eyebrow: "Algunos proyectos",
   titleBefore: "Negocios reales. Soluciones ",
   titleEm: "reales.",
   intro: "Cuatro huecos. Los casos entran cuando se pueden contar.",
@@ -190,7 +190,7 @@ export const banner = {
 
 export const teamSection = {
   id: "equipo",
-  eyebrow: "04 — El equipo",
+  eyebrow: "El equipo",
   titleBefore: "Trabajáis con quien ",
   titleEm: "construye.",
   intro:
@@ -236,7 +236,12 @@ export const team: Teammate[] = [
     name: "Javier",
     role: "CEO & Polímata",
     bio: "El polímata que conecta los puntos y rumia tu caso hasta solucionarlo.",
-    portrait: javierPortrait,
+    portrait: {
+      src: "/team/javier.webp",
+      width: 280,
+      height: 280,
+      alt: "Retrato pixel art de Javier Peñas: primer plano con gafas y traje gris.",
+    },
     tone: "#1C1B16",
     on: "#F4F1E8",
   },
@@ -264,8 +269,8 @@ export const team: Teammate[] = [
     role: "Tecnología",
     bio: "Traduce ideas imposibles al idioma del código y la estabilidad.",
     portrait: studioPortrait("luis", "Retrato pixel art de Luis, Tecnología"),
-    tone: "#4F46E5",
-    on: "#FBF9F2",
+    tone: "#E8642C",
+    on: "#1C1B16",
   },
   {
     initials: "A",
@@ -284,13 +289,13 @@ export const team: Teammate[] = [
     ai: true,
     portrait: studioPortrait("estella", "Retrato pixel art de Estella, Compañera IA, Contenido"),
     tone: "#FBF9F2",
-    on: "#4F46E5",
+    on: "#B84514",
   },
 ];
 
 export const processSection = {
   id: "por-que",
-  eyebrow: "05 — Por qué Zentrel",
+  eyebrow: "Por qué Zentrel",
   title: "4 reglas básicas de éxito",
 } as const;
 
@@ -303,17 +308,17 @@ export const processSteps = [
 
 export const founder = {
   id: "fundador",
-  eyebrow: "06 — Sobre el fundador",
+  eyebrow: "Sobre el fundador",
   name: "Javier Peñas",
   role: "Polímata y creador de productos",
   lead: "Soy creador de producto: hago software y productos digitales que dan vida a las ideas en cualquier plataforma, combinando estrategia, creatividad y tecnología.",
-  bio: "Creo herramientas que la gente disfruta usando, uniendo diseño intuitivo y soluciones reales. A lo largo de una carrera larga y en muchos sectores, mi objetivo no ha cambiado: hacer experiencias tecnológicas que mejoren negocios.",
+  bio: "Creo herramientas que la gente disfruta usando, uniendo diseño intuitivo y soluciones reales. A lo largo de mi carrera y en muchos sectores, mi objetivo no ha cambiado: crear experiencias tecnológicas que enamoren, mejoren los negocios y sus procesos.",
   cta: { href: "/javier-penas", label: "CV completo" },
 } as const;
 
 export const contactSection = {
   id: "contacto",
-  eyebrow: "07 — Empieza tu proyecto",
+  eyebrow: "Empieza tu proyecto",
   titleBefore: "Hagamos algo ",
   titleEm: "diferente.",
   body: "Deja de ver vídeos de cómo otros hacen cosas increíbles con IA y empieza a hacer tu propio camino. Cuéntanos qué estás haciendo y dónde quieres llegar, y te decimos si podemos ayudarte.",
