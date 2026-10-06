@@ -71,5 +71,4 @@ TODO: demos de producto en el navegador. La ruta reservada es [`/demos/configura
 - Confirmación pública de cada marca (NDA) y los SVG en `public/brands/`.
 - Cuatro casos reales en los huecos de Prueba (`lib/content.ts`, campos `name` y `outcome`).
 - Cifras de años y proyectos, cuando se puedan decir. Hoy la prueba social del hero no inventa números.
-- Retratos del equipo y bios cortas. Estella debe seguir marcada como compañera de IA.
 - El configurador (y otros demos) en `/demos/configurador`.
