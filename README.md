@@ -32,7 +32,7 @@ Cuando el build falle en Vercel, el log suele bastar: este proyecto no depende d
 
 ## Dominio `zentrel`
 
-El dominio definitivo todavía no está cerrado. Cuando exista (por ejemplo `zentrel.com`):
+El correo público es `hola@zentrel.es`. El dominio canónico usado en los metadatos es `zentrel.es`. Si el dominio de producción cambia:
 
 1. En el proyecto de Vercel, entra en **Settings → Domains** y añade el dominio.
 2. En el registrador, crea los registros DNS que indique Vercel (normalmente un `A` a `76.76.21.21` para el apex y un `CNAME` de `www` a `cname.vercel-dns.com` — confirma los valores en el panel, pueden cambiar).
@@ -41,7 +41,7 @@ El dominio definitivo todavía no está cerrado. Cuando exista (por ejemplo `zen
 
 ## Correo
 
-El mailto de la home apunta a `contact@zentrel.com`. Es un placeholder: el buzón no se crea con este sitio. Cuando el dominio esté comprado, abre el buzón real y, si la dirección cambia, actualiza `contactEmail` en `lib/content.ts`.
+El mailto de la home apunta a `hola@zentrel.es` (`contactEmail` en `lib/content.ts`). El buzón no se crea con este sitio: hay que abrirlo en el dominio.
 
 ## Marcas
 

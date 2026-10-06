@@ -1,5 +1,7 @@
+import { Banner } from "@/components/Banner";
 import { Brands } from "@/components/Brands";
 import { Contact } from "@/components/Contact";
+import { Founder } from "@/components/Founder";
 import { Hero } from "@/components/Hero";
 import { Layers } from "@/components/Layers";
 import { Process } from "@/components/Process";
@@ -13,8 +15,10 @@ export default function Home() {
       <Layers />
       <Brands />
       <WorkPlaceholders />
+      <Banner />
       <Team />
       <Process />
+      <Founder />
       <Contact />
     </main>
   );

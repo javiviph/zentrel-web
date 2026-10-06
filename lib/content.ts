@@ -1,5 +1,5 @@
 /**
- * Copy and structured content for the Zentrel home page.
+ * Copy and structured content for the Zentrel site.
  * Spanish (es). Prices stay off the site — conversations only.
  *
  * Brand logos: drop a file at /public/brands/<slug>.svg and set `svg`
@@ -7,57 +7,114 @@
  * otherwise a text wordmark.
  */
 
-export const contactEmail = "contact@zentrel.com";
+export const siteUrl = "https://zentrel.es";
+
+export const contactEmail = "hola@zentrel.es";
 
 export const mailtoHref = `mailto:${contactEmail}?subject=${encodeURIComponent(
   "Quiero construir algo con Zentrel",
 )}`;
 
+/**
+ * TODO(voice-call): the contact CTA will start an AI voice call that books a meeting.
+ * Keep this false until that call exists. `Contact` only invokes `onStartVoiceCall` when this is true.
+ */
+export const voiceCallEnabled = false;
+
+export const headerCta = {
+  href: "/#contacto",
+  label: "Consulta tu caso",
+} as const;
+
 export const nav = [
-  { href: "/#capas", id: "capas", label: "Ayudamos" },
+  { href: "/#que-hacemos", id: "que-hacemos", label: "Qué hacemos" },
   { href: "/#marcas", id: "marcas", label: "Marcas" },
-  { href: "/#prueba", id: "prueba", label: "Prueba" },
+  { href: "/#proyectos", id: "proyectos", label: "Proyectos" },
   { href: "/#equipo", id: "equipo", label: "Equipo" },
-  { href: "/#proceso", id: "proceso", label: "Proceso" },
+  { href: "/#por-que", id: "por-que", label: "Por qué" },
 ] as const;
 
-/**
- * TODO(proof): the wireframe calls for “Años · proyectos · Trabajáis con quien construye”.
- * Swap the first two lines for confirmed figures when they exist. Do not invent counts.
- */
+export const footerBlurb =
+  "Asistentes, automatizaciones y herramientas a medida para que una pyme venda y opere con menos fricción.";
+
+export const footerCaption = "Antes todo esto era campo";
+
+type HeroRun = { text: string; mark?: boolean; serif?: boolean };
+
+export const hero = {
+  eyebrow: "Estudio digital",
+  lines: [
+    [{ text: "Creamos experiencias" }],
+    [{ text: "tecnológicas que" }],
+    [
+      { text: "enamoran", mark: true },
+      { text: " a tus " },
+      { text: "clientes.", serif: true },
+    ],
+  ] satisfies HeroRun[][],
+  lede: "Asistentes, automatizaciones y herramientas a medida, webs, tours 3D y configuradores cuando hacen falta.",
+  support:
+    "Diseñado y construido de principio a fin por un estudio sénior. Sin traspasos, sin juniors, sin concesiones: solo trabajo con criterio y obsesión por que funcione.",
+  primaryCta: { href: "/#contacto", label: "Consulta tu caso" },
+  secondaryCta: { href: "/#proyectos", label: "Ver proyectos" },
+  chips: { live: "En el taller", since: "Estudio sénior" },
+} as const;
+
 export const proof = [
-  "Años en el oficio",
-  "Proyectos con criterio",
-  "Trabajáis con quien construye",
+  { strong: "13", label: "años creando" },
+  { strong: "+200", label: "proyectos" },
+  { label: "Experiencias a medida + optimización tech + criterio sénior" },
 ] as const;
+
+export const servicesSection = {
+  id: "que-hacemos",
+  eyebrow: "01 — QUÉ HACEMOS",
+  titleBefore: "Creamos experiencias tecnológicas avanzadas adaptadas a ",
+  titleEm: "tu caso.",
+  intro:
+    "Tres niveles. Tu caso. Empezamos donde necesites y escalamos sin cambiar de equipo.",
+} as const;
+
+export type ServiceArtKind = "visual" | "brain" | "software";
 
 export type Layer = {
   index: string;
   name: string;
   body: string;
   chips: string[];
+  art: ServiceArtKind;
 };
 
 export const layers: Layer[] = [
   {
     index: "01",
-    name: "Puerta de entrada",
-    body: "Webs, contenido, tours virtuales 3D y configuradores de producto. Para que la marca se vea, se entienda y convierta.",
+    name: "Experiencias Visuales",
+    body: "Diseñamos y desarrollamos tu web, contenido editorial con IA o tradicional (tú eliges), tours virtuales inmersivos y experiencias 3D con configuradores de producto interactivos.",
     chips: ["Webs", "Contenido", "Tours 3D", "Configuradores"],
+    art: "visual",
   },
   {
     index: "02",
-    name: "Core recurrente",
-    body: "Asistentes de voz y chat + automatizaciones inteligentes. Menos fricción en ventas y operaciones, mes a mes.",
-    chips: ["Voz", "Chat", "Automatizaciones"],
+    name: "Cerebro Digital",
+    body: "Asistentes de voz y chat + automatizaciones inteligentes. Sistemas con flujos organizados y menos fricción en ventas y operaciones, mes a mes.",
+    chips: ["Voz", "Chat", "Automatizaciones", "Sistemas de gestión", "Agentes IA"],
+    art: "brain",
   },
   {
     index: "03",
-    name: "Alto valor",
-    body: "Software a medida en 7–30 días. Criterio senior + IA. De la idea al producto que usáis de verdad.",
-    chips: ["Software a medida", "7–30 días"],
+    name: "Software a medida",
+    body: "Software a medida en 7–30 días. Criterio sénior + IA. De la idea al producto que usáis de verdad, porque cualquiera puede hacerlo, pero nosotros lo hacemos bien y con cariño.",
+    chips: ["Software", "IA", "SaaS"],
+    art: "software",
   },
 ];
+
+export const brandsSection = {
+  id: "marcas",
+  eyebrow: "02 — Marcas",
+  titleBefore: "Marcas con las que ",
+  titleEm: "hemos trabajado.",
+} as const;
 
 export type Brand = {
   name: string;
@@ -93,6 +150,14 @@ export const brands: Brand[] = [
   { name: "Junta de Andalucía", slug: "junta-de-andalucia" },
 ];
 
+export const projectsSection = {
+  id: "proyectos",
+  eyebrow: "03 — Algunos proyectos",
+  titleBefore: "Negocios reales. Soluciones ",
+  titleEm: "reales.",
+  intro: "Cuatro huecos. Los casos entran cuando se pueden contar.",
+} as const;
+
 export type CaseSlot = {
   index: string;
   type: string;
@@ -108,69 +173,123 @@ export const cases: CaseSlot[] = [
   { index: "04", type: "Web / configurador", name: null, outcome: null },
 ];
 
+/**
+ * TODO(banner-copy): provisional strip. Same behavior as the Yenze figures banner
+ * (pixel sky + count-up). Replace eyebrow, caption and figures when the final line exists.
+ * Do not drop in unverified totals (retention, industries, etc.).
+ */
+export const banner = {
+  id: "cifras",
+  eyebrow: "En cifras",
+  caption: "El oficio, sin adorno.",
+  stats: [
+    { value: 13, suffix: "", label: "Años creando" },
+    { value: 200, suffix: "+", label: "Proyectos" },
+    { value: 3, suffix: "", label: "Niveles de trabajo" },
+  ],
+} as const;
+
+export const teamSection = {
+  id: "equipo",
+  eyebrow: "04 — El equipo",
+  titleBefore: "Trabajáis con quien ",
+  titleEm: "construye.",
+  intro:
+    "Somos un estudio sénior. Sin capas de cuenta, sin juniors aprendiendo con vuestro presupuesto.",
+} as const;
+
 export type Teammate = {
+  initials: string;
   name: string;
   role: string;
-  /** Shown only when we have a real note. Bios are still pending for most of the studio. */
-  note?: string;
+  bio: string;
   /** Estella is the only teammate presented openly as AI. */
   ai?: boolean;
-  initials: string;
   tone: string;
   on: string;
 };
 
 export const team: Teammate[] = [
   {
-    name: "Javier",
-    role: "CEO",
-    note: "Siempre en las reuniones.",
     initials: "J",
+    name: "Javier",
+    role: "CEO & Polímata",
+    bio: "El polímata que conecta los puntos y rumia tu caso hasta solucionarlo.",
     tone: "#1C1B16",
     on: "#F4F1E8",
   },
   {
+    initials: "S",
     name: "Susana",
     role: "Diseño",
-    initials: "S",
+    bio: "Hace que las cosas no solo funcionen, sino que enamoren a primera vista.",
     tone: "#A34B32",
     on: "#FBF9F2",
   },
   {
+    initials: "R",
     name: "Rubén",
     role: "Experiencias virtuales / 3D",
-    initials: "R",
+    bio: "Construye las dimensiones que el resto aún no podemos ver.",
     tone: "#2F5D73",
     on: "#FBF9F2",
   },
   {
+    initials: "L",
     name: "Luis",
     role: "Tecnología",
-    initials: "L",
+    bio: "Traduce ideas imposibles al idioma del código y la estabilidad.",
     tone: "#4F46E5",
     on: "#FBF9F2",
   },
   {
+    initials: "A",
     name: "Andrea",
     role: "Automatizaciones",
-    initials: "A",
+    bio: "Le devuelve tiempo al reloj haciendo que los procesos funcionen de verdad.",
     tone: "#3D6B32",
     on: "#FBF9F2",
   },
   {
-    name: "Estella",
-    role: "Contenido IA",
-    note: "Compañera de IA del estudio. No es una persona.",
-    ai: true,
     initials: "IA",
+    name: "Estella",
+    role: "Compañera IA (Contenido)",
+    bio: "Nuestra creadora de contenido digital. No toma café, pero genera ideas a la velocidad de la luz.",
+    ai: true,
     tone: "#FBF9F2",
     on: "#4F46E5",
   },
 ];
 
+export const processSection = {
+  id: "por-que",
+  eyebrow: "05 — Por qué Zentrel",
+  title: "4 reglas básicas de éxito",
+} as const;
+
 export const processSteps = [
-  "De principio a fin, un solo equipo.",
+  "Un equipo sénior de principio a fin.",
   "Pocos proyectos a la vez.",
-  "Plazos cortos cuando el alcance lo permite.",
+  "Plazos cortos de entrega y mejora continua.",
   "Os decimos con honestidad si no somos el encaje.",
 ] as const;
+
+export const founder = {
+  id: "fundador",
+  eyebrow: "06 — Sobre el fundador",
+  name: "Javier Peñas",
+  role: "Polímata y creador de productos",
+  lead: "Soy creador de producto: hago software y productos digitales que dan vida a las ideas en cualquier plataforma, combinando estrategia, creatividad y tecnología.",
+  bio: "Creo herramientas que la gente disfruta usando, uniendo diseño intuitivo y soluciones reales. A lo largo de una carrera larga y en muchos sectores, mi objetivo no ha cambiado: hacer experiencias tecnológicas que mejoren negocios.",
+  cta: { href: "/javier-penas", label: "CV completo" },
+} as const;
+
+export const contactSection = {
+  id: "contacto",
+  eyebrow: "07 — Empieza tu proyecto",
+  titleBefore: "Hagamos algo ",
+  titleEm: "diferente.",
+  body: "Deja de ver vídeos de cómo otros hacen cosas increíbles con IA y empieza a hacer tu propio camino. Cuéntanos qué estás haciendo y dónde quieres llegar, y te decimos si podemos ayudarte.",
+  cta: "Hablar con nuestra IA",
+  soonLead: "Muy pronto: podrás hablar con nuestra IA. Mientras, escríbenos a",
+} as const;

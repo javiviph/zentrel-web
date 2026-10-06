@@ -1,20 +1,12 @@
 import { SectionHeading } from "@/components/SectionHeading";
-import { processSteps } from "@/lib/content";
+import { processSection, processSteps } from "@/lib/content";
 
 export function Process() {
   return (
-    <section id="proceso" className="section" aria-labelledby="proceso-title">
+    <section id={processSection.id} className="section" aria-labelledby="proceso-title">
       <div className="wrap">
         <div className="reveal">
-          <SectionHeading
-            id="proceso-title"
-            index="05"
-            title={
-              <>
-                Cómo <span className="serif">trabajamos</span>
-              </>
-            }
-          />
+          <SectionHeading id="proceso-title" eyebrow={processSection.eyebrow} title={processSection.title} />
         </div>
         <ol className="mt-12 grid gap-5 md:grid-cols-2">
           {processSteps.map((step, index) => (

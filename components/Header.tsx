@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/Logo";
-import { nav } from "@/lib/content";
+import { headerCta, nav } from "@/lib/content";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -85,8 +85,8 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href="/#contacto" className="btn btn-primary hidden px-3.5 py-2 text-sm sm:inline-flex">
-            Hablemos
+          <Link href={headerCta.href} className="btn btn-primary hidden px-3.5 py-2 text-sm sm:inline-flex">
+            {headerCta.label}
           </Link>
           <button
             type="button"
@@ -128,7 +128,7 @@ export function Header() {
             ))}
           </ul>
           <Link
-            href="/#contacto"
+            href={headerCta.href}
             className="btn btn-primary mt-6 w-full no-underline"
             onClick={(event) => {
               if (document.getElementById("contacto")) {
@@ -139,7 +139,7 @@ export function Header() {
               }
             }}
           >
-            Hablemos
+            {headerCta.label}
           </Link>
         </nav>
       ) : null}
