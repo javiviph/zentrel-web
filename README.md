@@ -32,7 +32,7 @@ Cuando el build falle en Vercel, el log suele bastar: este proyecto no depende d
 
 ## Dominio `zentrel`
 
-El correo público es `hola@zentrel.es`. El dominio canónico usado en los metadatos es `zentrel.es`. Si el dominio de producción cambia:
+El correo público es `hola@zentrel.es`. La URL de producción usada en los metadatos (`metadataBase`, canonical, Open Graph y JSON-LD) es `https://zentrelweb.vercel.app`. Si el dominio de producción cambia:
 
 1. En el proyecto de Vercel, entra en **Settings → Domains** y añade el dominio.
 2. En el registrador, crea los registros DNS que indique Vercel (normalmente un `A` a `76.76.21.21` para el apex y un `CNAME` de `www` a `cname.vercel-dns.com` — confirma los valores en el panel, pueden cambiar).
