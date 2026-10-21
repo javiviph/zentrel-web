@@ -87,6 +87,12 @@ export const servicesSection = {
 
 export type ServiceArtKind = "visual" | "brain" | "software";
 
+export const serviceArt = {
+  visual: { src: "/services/vr.webp", width: 1024, height: 1024 },
+  brain: { src: "/services/brain.webp", width: 1024, height: 1024 },
+  software: { src: "/services/software.webp", width: 1024, height: 1024 },
+} as const satisfies Record<ServiceArtKind, { src: string; width: number; height: number }>;
+
 export type Layer = {
   index: string;
   name: string;
