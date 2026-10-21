@@ -6,7 +6,7 @@ import { contactEmail, contactSection, mailtoHref, voiceCallEnabled } from "@/li
 type ContactProps = {
   /**
    * TODO(voice-call): pass the function that opens the AI voice call.
-   * It runs only when `voiceCallEnabled` is true. Until then the button explains that the call is not live yet.
+   * It runs only when `voiceCallEnabled` is true. The home button is WhatsApp until then.
    */
   onStartVoiceCall?: () => void;
 };
@@ -36,15 +36,26 @@ export function Contact({ onStartVoiceCall }: ContactProps) {
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink2">{contactSection.body}</p>
           <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-            <button type="button" className="btn btn-primary" data-voice-call="pending" onClick={startVoiceCall}>
+            <a
+              href={contactSection.whatsappHref}
+              className="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {contactSection.cta}
               <span aria-hidden="true">→</span>
-            </button>
+            </a>
             <a href={mailtoHref} className="text-link">
               {contactEmail}
             </a>
+            {voiceCallEnabled ? (
+              <button type="button" className="btn btn-secondary" data-voice-call="live" onClick={startVoiceCall}>
+                Hablar con nuestra IA
+                <span aria-hidden="true">→</span>
+              </button>
+            ) : null}
           </div>
-          {soon ? (
+          {voiceCallEnabled && soon ? (
             <p role="status" className="mt-4 max-w-md text-sm leading-relaxed text-ink2">
               {contactSection.soonLead}{" "}
               <a href={`mailto:${contactEmail}`} className="font-semibold text-ink underline decoration-accent-ink/50 underline-offset-2">

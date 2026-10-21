@@ -7,7 +7,8 @@
  * otherwise a text wordmark.
  */
 
-export const siteUrl = "https://zentrel.es";
+/** Production host. Canonical, Open Graph and JSON-LD resolve from this. */
+export const siteUrl = "https://zentrelweb.vercel.app";
 
 export const contactEmail = "hola@zentrel.es";
 
@@ -16,10 +17,12 @@ export const mailtoHref = `mailto:${contactEmail}?subject=${encodeURIComponent(
 )}`;
 
 /**
- * TODO(voice-call): the contact CTA will start an AI voice call that books a meeting.
- * Keep this false until that call exists. `Contact` only invokes `onStartVoiceCall` when this is true.
+ * TODO(voice-call): when this is true, Contact can start an AI voice call via `onStartVoiceCall`.
+ * The visible home CTA is WhatsApp until that call exists.
  */
 export const voiceCallEnabled = false;
+
+export const whatsappHref = "https://wa.me/34664674966";
 
 export const headerCta = {
   href: "/#contacto",
@@ -54,10 +57,17 @@ export const hero = {
   ] satisfies HeroRun[][],
   lede: "Asistentes, automatizaciones y herramientas a medida, webs, tours 3D y configuradores cuando hacen falta.",
   support:
-    "Diseñado y construido de principio a fin por un estudio sénior. Sin traspasos, sin juniors, sin concesiones: solo trabajo con criterio y obsesión por que funcione.",
+    "Lo diseña y lo construye un equipo sénior de builders y makers, de principio a fin. Tecnología con criterio y obsesión por que funcione.",
   primaryCta: { href: "/#contacto", label: "Consulta tu caso" },
   secondaryCta: { href: "/#proyectos", label: "Ver proyectos" },
   chips: { live: "En el taller", since: "Estudio sénior" },
+} as const;
+
+export const heroArt = {
+  src: "/hero-team.webp",
+  width: 1376,
+  height: 768,
+  alt: "Oficina isométrica pixel-art del estudio: el equipo trabaja entre monitores, plantas y una pizarra.",
 } as const;
 
 export const proof = [
@@ -69,7 +79,7 @@ export const proof = [
 export const servicesSection = {
   id: "que-hacemos",
   eyebrow: "Qué hacemos",
-  titleBefore: "Creamos experiencias tecnológicas avanzadas adaptadas a ",
+  titleBefore: "Creamos experiencias y tecnología adaptada a ",
   titleEm: "tu caso.",
   intro:
     "Tres niveles. Tu caso. Empezamos donde necesites y escalamos sin cambiar de equipo.",
@@ -194,7 +204,7 @@ export const teamSection = {
   titleBefore: "Trabajáis con quien ",
   titleEm: "construye.",
   intro:
-    "Somos un estudio sénior. Sin capas de cuenta, sin juniors aprendiendo con vuestro presupuesto.",
+    "Un equipo sénior de builders y makers. La tecnología la lleva quien la construye, con oficio y criterio.",
 } as const;
 
 export const javierPortrait = {
@@ -313,7 +323,14 @@ export const founder = {
   role: "Polímata y creador de productos",
   lead: "Soy creador de producto: hago software y productos digitales que dan vida a las ideas en cualquier plataforma, combinando estrategia, creatividad y tecnología.",
   bio: "Creo herramientas que la gente disfruta usando, uniendo diseño intuitivo y soluciones reales. A lo largo de mi carrera y en muchos sectores, mi objetivo no ha cambiado: crear experiencias tecnológicas que enamoren, mejoren los negocios y sus procesos.",
-  cta: { href: "/javier-penas", label: "CV completo" },
+} as const;
+
+/** Full-body portrait for the home founder section. The CV keeps `javierPortrait`. */
+export const founderPortrait = {
+  src: "/founder.webp",
+  width: 980,
+  height: 1663,
+  alt: "Retrato pixel-art de Javier Peñas, de cuerpo entero, sentado con un café sobre fondo beige.",
 } as const;
 
 export const contactSection = {
@@ -322,6 +339,7 @@ export const contactSection = {
   titleBefore: "Hagamos algo ",
   titleEm: "diferente.",
   body: "Deja de ver vídeos de cómo otros hacen cosas increíbles con IA y empieza a hacer tu propio camino. Cuéntanos qué estás haciendo y dónde quieres llegar, y te decimos si podemos ayudarte.",
-  cta: "Hablar con nuestra IA",
+  cta: "Habla con nosotros",
+  whatsappHref,
   soonLead: "Muy pronto: podrás hablar con nuestra IA. Mientras, escríbenos a",
 } as const;

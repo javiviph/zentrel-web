@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { founder, javierPortrait } from "@/lib/content";
+import { founder, founderPortrait } from "@/lib/content";
 
 export function Founder() {
   return (
@@ -10,11 +9,11 @@ export function Founder() {
         <div className="founder-grid">
           <div className="founder-photo">
             <Image
-              src={javierPortrait.src}
-              alt={javierPortrait.alt}
-              width={javierPortrait.width}
-              height={javierPortrait.height}
-              sizes="(max-width: 760px) 320px, 460px"
+              src={founderPortrait.src}
+              alt={founderPortrait.alt}
+              width={founderPortrait.width}
+              height={founderPortrait.height}
+              sizes="(max-width: 760px) 320px, 480px"
               unoptimized
               className="pixel-portrait founder-shot"
             />
@@ -27,10 +26,6 @@ export function Founder() {
             <p className="founder-role">{founder.role}</p>
             <p className="founder-lead">{founder.lead}</p>
             <p className="founder-bio">{founder.bio}</p>
-            <Link href={founder.cta.href} className="btn btn-primary mt-7">
-              {founder.cta.label}
-              <span aria-hidden="true">→</span>
-            </Link>
           </div>
         </div>
       </div>

@@ -1,82 +1,152 @@
 import type { ServiceArtKind } from "@/lib/content";
 
+const cream = "#f3e6c6";
+
+function IsoGrid() {
+  const lines = [];
+  for (let i = -160; i <= 320; i += 18) {
+    lines.push(<line key={`d${i}`} x1={i} y1={0} x2={i - 160} y2={160} />);
+    lines.push(<line key={`u${i}`} x1={i} y1={0} x2={i + 160} y2={160} />);
+  }
+  return (
+    <g fill="none" stroke="var(--accent)" strokeOpacity="0.28" strokeWidth="1">
+      {lines}
+    </g>
+  );
+}
+
+function Spark({ x, y, delay, size = 8 }: { x: number; y: number; delay: string; size?: number }) {
+  const t = 2;
+  const half = t / 2;
+  return (
+    <g className="svc-twinkle" style={{ animationDelay: delay }} transform={`translate(${x} ${y})`} fill="var(--accent)">
+      <rect x={-half} y={-size} width={t} height={size * 2} />
+      <rect x={-size} y={-half} width={size * 2} height={t} />
+      <rect x={-size + 2} y={-size + 2} width={t} height={t} />
+      <rect x={size - 4} y={-size + 2} width={t} height={t} />
+      <rect x={-size + 2} y={size - 4} width={t} height={t} />
+      <rect x={size - 4} y={size - 4} width={t} height={t} />
+    </g>
+  );
+}
+
 function Visual() {
   return (
-    <svg viewBox="0 0 104 104" aria-hidden="true">
-      <rect width="104" height="104" fill="#F6E3C0" />
-      <circle cx="84" cy="20" r="9" fill="#F2C14E" />
-      <path d="M0 62c18-8 28 6 48-2 16-6 28 8 56-6v50H0Z" fill="#97B56C" />
-      <path d="M0 78c24-8 40 8 104-4v30H0Z" fill="#538537" />
-      <g className="m bob">
-        <rect x="16" y="30" width="48" height="32" rx="3" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.6" />
-        <rect x="20" y="34" width="40" height="20" fill="#241F1A" />
-        <rect className="m bar" x="24" y="44" width="6" height="8" fill="var(--accent-hot)" />
-        <rect className="m bar d1" x="33" y="40" width="6" height="12" fill="#74A84A" />
-        <rect className="m bar d2" x="42" y="36" width="6" height="16" fill="#F2C14E" />
-        <rect x="34" y="62" width="12" height="4" fill="#1C1B16" />
-        <rect x="28" y="66" width="24" height="3" rx="1" fill="#8A5A32" />
-      </g>
-      <g className="m rock">
-        <path d="M78 58l14 7-14 7-14-7 14-7Z" fill="#D5E4F2" stroke="#1C1B16" strokeWidth="1.3" />
-        <path d="M78 72l14-7v12l-14 7V72Z" fill="var(--accent)" stroke="#1C1B16" strokeWidth="1.3" />
-        <path d="M78 72l-14-7v12l14 7V72Z" fill="#74A84A" stroke="#1C1B16" strokeWidth="1.3" />
+    <svg viewBox="0 0 160 160" aria-hidden="true" shapeRendering="crispEdges">
+      <rect width="160" height="160" fill={cream} />
+      <Spark x={22} y={28} delay="0s" />
+      <Spark x={138} y={24} delay="0.45s" size={6} />
+      <Spark x={18} y={132} delay="1.1s" size={6} />
+      <Spark x={142} y={118} delay="0.8s" />
+      <Spark x={80} y={16} delay="1.4s" size={5} />
+      <g
+        className="svc-float"
+        fill="none"
+        stroke="var(--accent)"
+        strokeWidth="3"
+        strokeLinejoin="miter"
+        strokeLinecap="square"
+      >
+        <path d="M48 86 V64 L62 46 H98 L112 64 V86" />
+        <path d="M56 86 V68 L68 54 H92 L104 68 V86" strokeWidth="2" />
+        <path d="M22 78 H138 L148 90 V116 L138 128 H22 L12 116 V90 Z" fill={cream} />
+        <rect x="34" y="90" width="38" height="26" />
+        <rect x="88" y="90" width="38" height="26" />
+        <path d="M40 96 H66 M94 96 H120" strokeWidth="2" />
+        <path d="M72 108 L80 120 L88 108" />
+        <path d="M12 98 H4 V112 H12 M148 98 H156 V112 H148" />
       </g>
     </svg>
+  );
+}
+
+function Trace({ d, delay }: { d: string; delay: string }) {
+  return (
+    <path
+      d={d}
+      pathLength={100}
+      className="svc-trace"
+      style={{ animationDelay: delay }}
+      fill="none"
+      stroke="var(--accent)"
+      strokeWidth="2"
+      strokeLinejoin="miter"
+      strokeLinecap="square"
+    />
   );
 }
 
 function Brain() {
   return (
-    <svg viewBox="0 0 104 104" aria-hidden="true">
-      <rect width="104" height="104" fill="var(--accent-wash)" />
-      <g fill="none" stroke="var(--accent)" strokeWidth="1.6" strokeLinecap="round" className="m dash">
-        <path d="M28 36h22" />
-        <path d="M50 36 68 52" />
-        <path d="M28 68h24" />
-        <path d="M52 68 70 54" />
-        <path d="M30 40v24" />
+    <svg viewBox="0 0 160 160" aria-hidden="true" shapeRendering="crispEdges">
+      <rect width="160" height="160" fill={cream} />
+      <IsoGrid />
+      <g fill="none" stroke="var(--accent)" strokeWidth="3" strokeLinejoin="miter" strokeLinecap="square">
+        <path
+          shapeRendering="geometricPrecision"
+          d="M80 28c16-2 34 6 42 22 8 2 16 12 14 24 8 10 6 24-6 32 4 12-4 26-18 32-8 8-22 10-32 4-14-2-26-14-28-28-10-6-16-20-10-32 2-14 10-24 22-30 2-12 8-22 16-24z"
+        />
+        <path shapeRendering="geometricPrecision" d="M78 36c-4 18 6 32-2 52 6 16 2 32 8 46" strokeWidth="2" />
+        <path shapeRendering="geometricPrecision" d="M96 42c8 10 6 22 14 30M60 48c-8 12-6 24-12 32M92 96c10 6 14 16 10 28M58 100c-6 8-4 18 2 26" strokeWidth="2" />
       </g>
-      <g className="m node">
-        <circle cx="26" cy="36" r="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
-        <circle cx="26" cy="36" r="2.2" fill="var(--accent)" />
-      </g>
-      <g className="m node d1">
-        <circle cx="52" cy="36" r="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
-        <circle cx="52" cy="36" r="2.2" fill="#74A84A" />
-      </g>
-      <g className="m node d2">
-        <circle cx="28" cy="68" r="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
-        <circle cx="28" cy="68" r="2.2" fill="#F2C14E" />
-      </g>
-      <g className="m node d1">
-        <circle cx="54" cy="70" r="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
-        <circle cx="54" cy="70" r="2.2" fill="var(--accent)" />
-      </g>
-      <g className="m bob">
-        <rect x="62" y="40" width="30" height="22" rx="6" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.5" />
-        <path d="M70 62l-4 6 8-4" fill="#FBF9F2" stroke="#1C1B16" strokeWidth="1.4" />
-        <rect x="68" y="47" width="16" height="2" rx="1" fill="var(--accent)" />
-        <rect x="68" y="53" width="10" height="2" rx="1" fill="#8C8979" />
+      <Trace d="M54 70 H74 L92 86 H118" delay="0s" />
+      <Trace d="M50 94 H72 L90 76 H108" delay="-0.7s" />
+      <Trace d="M62 112 H94 L112 96" delay="-1.3s" />
+      <Trace d="M68 56 H90 L106 70" delay="-0.4s" />
+      <g fill="var(--accent)">
+        <rect className="svc-node" x="50" y="66" width="6" height="6" />
+        <rect className="svc-node" x="88" y="82" width="6" height="6" style={{ animationDelay: "0.35s" }} />
+        <rect className="svc-node" x="114" y="66" width="6" height="6" style={{ animationDelay: "0.7s" }} />
+        <rect className="svc-node" x="90" y="108" width="6" height="6" style={{ animationDelay: "0.2s" }} />
+        <rect className="svc-node" x="64" y="52" width="6" height="6" style={{ animationDelay: "0.9s" }} />
       </g>
     </svg>
   );
 }
 
+function Bar({ x, h, delay }: { x: number; h: number; delay: string }) {
+  const y = 96 - h;
+  return (
+    <rect
+      className="svc-bar"
+      x={x}
+      y={y}
+      width="8"
+      height={h}
+      style={{ animationDelay: delay }}
+      fill="none"
+      stroke="var(--accent)"
+      strokeWidth="2"
+    />
+  );
+}
+
 function Software() {
   return (
-    <svg viewBox="0 0 104 104" aria-hidden="true">
-      <rect width="104" height="104" fill="#241F1A" />
-      <rect x="12" y="16" width="80" height="72" rx="6" fill="#1C1B16" stroke="#F4F1E8" strokeWidth="1.5" />
-      <circle cx="22" cy="26" r="2.2" fill="#E0584B" />
-      <circle cx="30" cy="26" r="2.2" fill="#F2C14E" />
-      <circle cx="38" cy="26" r="2.2" fill="#74A84A" />
-      <g fill="#F4F1E8">
-        <rect className="m line" x="20" y="40" width="46" height="4" rx="1" />
-        <rect className="m line d1" x="20" y="50" width="34" height="4" rx="1" fill="var(--accent-hot)" />
-        <rect className="m line d2" x="20" y="60" width="52" height="4" rx="1" />
-        <rect className="m line d3" x="20" y="70" width="22" height="4" rx="1" fill="#74A84A" />
+    <svg viewBox="0 0 160 160" aria-hidden="true" shapeRendering="crispEdges">
+      <rect width="160" height="160" fill={cream} />
+      <IsoGrid />
+      <g fill={cream} stroke="var(--accent)" strokeWidth="3" strokeLinejoin="miter" strokeLinecap="square">
+        <polygon points="36,48 48,36 140,36 128,48" />
+        <polygon points="128,48 140,36 140,104 128,116" />
+        <rect x="36" y="48" width="92" height="68" />
       </g>
-      <rect className="m caret" x="46" y="69" width="3" height="6" fill="#F2C14E" />
+      <rect x="46" y="58" width="72" height="46" fill="none" stroke="var(--accent)" strokeWidth="2" />
+      <g fill="var(--accent)">
+        <rect x="50" y="52" width="4" height="4" />
+        <rect x="58" y="52" width="4" height="4" />
+        <rect x="66" y="52" width="4" height="4" />
+      </g>
+      <line x1="52" y1="96" x2="110" y2="96" stroke="var(--accent)" strokeWidth="2" />
+      <Bar x={54} h={18} delay="0s" />
+      <Bar x={68} h={28} delay="0.2s" />
+      <Bar x={82} h={14} delay="0.45s" />
+      <Bar x={96} h={24} delay="0.15s" />
+      <rect className="svc-caret" x="104" y="70" width="3" height="8" fill="var(--accent)" />
+      <g fill={cream} stroke="var(--accent)" strokeWidth="3" strokeLinejoin="miter">
+        <rect x="74" y="116" width="16" height="12" />
+        <polygon points="56,128 112,128 120,136 48,136" />
+      </g>
     </svg>
   );
 }
