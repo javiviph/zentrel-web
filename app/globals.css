@@ -556,98 +556,15 @@ body::before {
   overflow: hidden;
   border: 1.5px solid var(--ink);
   border-radius: 16px;
-  background: #f3e6c6;
+  background: var(--card);
   box-shadow: 3px 3px 0 rgba(28, 27, 22, 0.18);
-  transition: transform 0.35s var(--ease);
 }
 
-.svc-art svg {
+.svc-shot {
   display: block;
   width: 100%;
-  height: 100%;
-  shape-rendering: crispEdges;
-}
-
-.card:hover .svc-art {
-  transform: rotate(-2deg) scale(1.025);
-}
-
-.svc-float {
-  animation: svc-float 3.8s ease-in-out infinite;
-}
-
-.svc-twinkle {
-  animation: svc-twinkle 2.4s ease-in-out infinite;
-}
-
-.svc-trace {
-  stroke-dasharray: 16 84;
-  animation: svc-trace 2.4s linear infinite;
-}
-
-.svc-node {
-  animation: svc-node 2.2s ease-in-out infinite;
-}
-
-.svc-bar {
-  transform-box: fill-box;
-  transform-origin: center bottom;
-  animation: svc-bar 2.4s var(--ease) infinite;
-}
-
-.svc-caret,
-.hero-cursor {
-  animation: svc-blink 1s steps(1) infinite;
-}
-
-@keyframes svc-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes svc-twinkle {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  45% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 0.45;
-  }
-}
-
-@keyframes svc-trace {
-  to {
-    stroke-dashoffset: -100;
-  }
-}
-
-@keyframes svc-node {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes svc-bar {
-  0%,
-  100% {
-    transform: scaleY(0.38);
-  }
-  42%,
-  70% {
-    transform: scaleY(1);
-  }
+  height: auto;
+  mix-blend-mode: multiply;
 }
 
 @keyframes svc-blink {
@@ -915,12 +832,6 @@ body::before {
     scroll-behavior: auto;
   }
 
-  .svc-float,
-  .svc-twinkle,
-  .svc-trace,
-  .svc-node,
-  .svc-bar,
-  .svc-caret,
   .hero-bob,
   .hero-sheen,
   .hero-screen,
@@ -929,16 +840,11 @@ body::before {
     animation: none !important;
   }
 
-  .svc-trace {
-    stroke-dasharray: none !important;
-  }
-
   .hero-drift {
     transform: none !important;
     transition: none;
   }
 
-  .card:hover .svc-art,
   .founder-photo,
   .founder-photo:hover {
     transform: none;
@@ -970,7 +876,6 @@ body::before {
   }
 
   .term-cursor,
-  .svc-caret,
   .hero-cursor {
     animation: none;
   }
